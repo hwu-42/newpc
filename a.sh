@@ -67,7 +67,10 @@ code --version | head -n 1
 echo "8. Installing Docker..."
 run_quietly apt install -y ca-certificates curl gnupg lsb-release
 run_quietly mkdir -p /etc/apt/keyrings
-run_quietly curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+run_quietly curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o docker.asc
+run_quietly gpg --dearmor -o /etc/apt/keyrings/docker.gpg docker.asc
+rm docker.asc
+
 
 run_quietly sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable" > /etc/apt/sources.list.d/docker.list'
 
