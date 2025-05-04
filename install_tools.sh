@@ -51,6 +51,8 @@ sudo apt install -y ./google-chrome.deb
 rm google-chrome.deb
 echo -n "Google Chrome version: "
 google-chrome --version || google-chrome-stable --version
+echo "✅ Google Chrome installed successfully."
+
 
 # --- Install Visual Studio Code ---
 echo "Installing Visual Studio Code..."
@@ -62,6 +64,7 @@ sudo apt update
 sudo apt install -y code
 echo -n "VS Code version: "
 code --version | head -n 1
+echo "✅ Visual Studio Code installed successfully."
 
 # --- Install Docker ---
 echo "Installing Docker..."
@@ -83,6 +86,8 @@ sudo systemctl enable docker
 sudo systemctl start docker
 echo -n "Docker version: "
 docker --version
+echo "✅ Docker installed and enabled successfully."
+
 
 # --- Docker Compose (Standalone) ---
 echo "Installing Docker-Compose (standalone binary)..."
@@ -91,7 +96,9 @@ sudo curl -L "https://github.com/docker/compose/releases/download/v2.23.3/docker
 sudo chmod +x /usr/local/bin/docker-compose
 echo -n "Docker Compose version: "
 docker-compose --version
+echo "✅ Docker-Compose installed successfully."
 
+echo "all job done, will re-login to apply changes."
 exec su -l $USER
 
 echo "✅ All software installed and verified successfully."
