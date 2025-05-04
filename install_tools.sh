@@ -74,7 +74,7 @@ echo   "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg]   https://downlo
 
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo usermod -aG docker
+sudo usermod -aG docker "$ORIGINAL_USER"
 exec su -l $USER
 
 # --- Enable Docker ---
