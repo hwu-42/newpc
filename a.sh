@@ -53,10 +53,11 @@ google-chrome --version 2>/dev/null || google-chrome-stable --version
 
 # --- Install Visual Studio Code ---
 echo "7. Installing Visual Studio Code..."
-run_quietly wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+run_quietly wget -q https://packages.microsoft.com/keys/microsoft.asc -O microsoft.asc
+run_quietly gpg --dearmor -o microsoft.gpg microsoft.asc
 run_quietly install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
 run_quietly sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-rm microsoft.gpg
+rm microsoft.asc microsoft.gpg
 run_quietly apt update
 run_quietly apt install -y code
 echo -n "VS Code version: "
