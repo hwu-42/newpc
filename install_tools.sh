@@ -78,7 +78,8 @@ echo   "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg]   https://downlo
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo usermod -aG docker "$ORIGINAL_USER"
-exec su -l $USER
+echo "✅ Docker installed successfully."
+echo "✅ User '$ORIGINAL_USER' added to Docker group."
 
 # --- Enable Docker ---
 echo "Enabling Docker service..."
@@ -86,7 +87,7 @@ sudo systemctl enable docker
 sudo systemctl start docker
 echo -n "Docker version: "
 docker --version
-echo "✅ Docker installed and enabled successfully."
+echo "✅ enabled successfully."
 
 
 # --- Docker Compose (Standalone) ---
