@@ -99,6 +99,22 @@ echo -n "Docker Compose version: "
 docker-compose --version
 echo "✅ Docker-Compose installed successfully."
 
+set -e
+
+# Download latest Slack .deb package
+
+
+
+# Install it
+echo "Installing Slack..."
+wget -O /tmp/slack.deb https://downloads.slack-edge.com/linux_releases/slack-desktop-4.37.101-amd64.deb
+sudo apt update
+sudo apt install -y /tmp/slack.deb
+
+# Clean up
+rm /tmp/slack.deb
+echo "Slack installed successfully."
+
 echo "all job done, will re-login to apply changes."
 exec su -l $USER
 
